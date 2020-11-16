@@ -1,0 +1,41 @@
+html {
+    min-height: 100vh;
+    padding: 0;
+
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    font-size: larger;
+}
+
+.game-board {
+    background: black;
+    min-height: 92vh; /* TODO: get this responsive instead of hard coded */ 
+    padding: 6px;
+
+    text-shadow: 5px 2px black;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 6px;
+    grid-auto-rows: minmax(15%, auto);
+}
+
+.square {
+    background: blue;
+
+}
+
+.category {
+    color: white;
+    font-size: 2rem;
+}
+
+.wager {
+    color: gold;
+    font-size: 3rem;
+}
+
+.wager:hover {
+    background: black;
+}
