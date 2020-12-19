@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Modal from "react-modal";
+import SelectedQuestion from "./SelectedQuestion";
 import data from "../data/board1";
 
 export default () => {
@@ -8,33 +10,40 @@ export default () => {
     minimumFractionDigits: 0,
   });
 
-  const [openQuestion, setOpenQuestion] = useState();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedQuestion, setSelectedQuestion] = useState();
 
-  return (
-    <div className="game-board">
-      {data.map((category) => {
-        return (
-          <>
-            <div className="square category">{category.categoryName}</div>
-            {category.questions.map((question, index) => (
-              <div className="square wager" onClick={() => setOpenQuestion(question)}>
-                {formatter.format((index + 1) * 200)}
-              </div>
-            ))}
-          </>
-        );
-      })}
-    </div>
-  );
-};
-
-const selectedQuestion = (props) => {
+  const handleQuestionSelection = (question) => {
+    setSelectedQuestion(question);
+    setModalIsOpen(true);
+  };
 
   return (
     <>
-      <p>
-        {props.question}
-      </p>
+      <Modal isOpen={modalIsOpen}>
+        <SelectedQuestion
+          selectedQuestion={selectedQuestion}
+          setModalIsOpen={setModalIsOpen}
+        />
+      </Modal>
+      <div className="game-board">
+        {data.map((category) => {
+          return (
+            <>
+              <div className="square category">{category.categoryName}</div>
+              {category.questions.map((question, index) => (
+                <div
+                  className="square wager"
+                  onClick={() => handleQuestionSelection(question)}
+                >
+                  {/* TODO: is it double jeopardy or single jeopardy? do we need both? */}
+                  {formatter.format((index + 1) * 200)}
+                </div>
+              ))}
+            </>
+          );
+        })}
+      </div>
     </>
   );
-}
+};

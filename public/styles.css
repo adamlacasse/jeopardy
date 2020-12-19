@@ -23,7 +23,6 @@ html {
 
 .square {
     background: blue;
-
 }
 
 .category {
@@ -33,6 +32,7 @@ html {
 
 .wager {
     color: gold;
+    cursor: pointer;
     font-size: 3rem;
 }
 
