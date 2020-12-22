@@ -11,10 +11,10 @@ export default (props) => {
 
   useEffect(() => {
     window.addEventListener('keydown', returnToGameBoardOnEscape);
-  }, []);
 
-  useEffect(() => () => {
-    window.removeEventListener('keydown', returnToGameBoardOnEscape);
+    return () => {
+      window.removeEventListener('keydown', returnToGameBoardOnEscape);
+    }
   }, []);
 
   const handleCorrectAnswer = () => {
