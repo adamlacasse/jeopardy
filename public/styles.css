@@ -1,4 +1,5 @@
 html {
+    background: black;
     min-height: 100vh;
     padding: 0;
 
@@ -8,8 +9,7 @@ html {
 }
 
 .game-board {
-    background: black;
-    min-height: 92vh; /* TODO: get this responsive instead of hard coded */ 
+    min-height: 92vh;
     padding: 6px;
 
     text-shadow: 5px 2px black;
@@ -19,6 +19,37 @@ html {
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 6px;
     grid-auto-rows: minmax(15%, auto);
+}
+
+.selected-question {
+    min-height: 95vh;
+    background: blue;
+}
+
+.question-and-answer-text {
+    color: white;
+    text-shadow: 5px 2px black;
+    font-size: 5rem;
+    padding: 1rem;
+}
+
+.close-button-container {
+    display: flex;
+}
+
+.answer-button {
+    background-color: black;
+}
+
+.answer-button:hover {
+    background-color: gold;
+    color: black;
+}
+
+.close-button {
+    cursor: pointer;
+    margin: .5rem 1rem .5rem auto;
+    font-size: 1.5rem;
 }
 
 .square {
@@ -38,4 +69,8 @@ html {
 
 .wager:hover {
     background: black;
+}
+
+.answered {
+    background: blue;
 }
